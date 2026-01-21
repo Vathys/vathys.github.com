@@ -4,18 +4,11 @@ runs:
   using: "composite"
   steps:
     - name: Setup Node.js ⚙️
-      uses: actions/setup-node@v4
+      uses: pnpm/action-setup@v4
       with:
         node-version: 24
-
-    - name: Cache dependencies ⚡
-      id: cache-dependencies
-      uses: actions/cache@v3
-      with:
-        path: node_modules
-        key: node-modules-${{ hashFiles('package-lock.json') }}
+        cache: true
 
     - name: Install dependencies 🔧
       shell: bash
-      if: steps.cache_dependencies.outputs.cache-hit != 'true'
-      run: pnpm ci
+      run: pnpm install --frozen-lockfile
