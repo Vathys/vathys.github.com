@@ -4,7 +4,7 @@ import { formatDate, getBlogPosts } from "@/blog/utils";
 import { baseUrl } from "@/sitemap";
 
 export async function generateStaticParams() {
-  let posts = getBlogPosts();
+  const posts = getBlogPosts();
 
   return posts.map((post) => ({
     slug: post.slug,
@@ -13,16 +13,15 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  let post = getBlogPosts().find((post) => post.slug === slug);
+  const post = getBlogPosts().find((post) => post.slug === slug);
   if (!post) {
     return;
   }
 
-  let {
+  const {
     title,
     publishedAt: publishedTime,
     summary: description,
-    image,
   } = post.metadata;
 
   return {
@@ -45,7 +44,7 @@ export async function generateMetadata({ params }) {
 
 export default async function Blog({ params }) {
   const { slug } = await params;
-  let post = getBlogPosts().find((post) => post.slug === slug);
+  const post = getBlogPosts().find((post) => post.slug === slug);
 
   if (!post) {
     notFound();
@@ -80,7 +79,7 @@ export default async function Blog({ params }) {
           {formatDate(post.metadata.publishedAt)}
         </p>
       </div>
-      <article className="prose">
+      <article className="prose dark:prose-invert">
         <CustomMDX source={post.content} />
       </article>
     </section>

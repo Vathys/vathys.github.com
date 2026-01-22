@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+// import { GeistSans } from "geist/font/sans";
+// import { GeistMono } from "geist/font/mono";
 import { Navbar } from "@/nav";
 import Footer from "@/footer";
 import { baseUrl } from "@/sitemap";
+
 import "@/global.css";
 
 export const metadata: Metadata = {
@@ -46,8 +47,8 @@ export default function RootLayout({
       lang="en"
       className={cx(
         "text-black bg-white dark:text-white dark:bg-black",
-        GeistSans.variable,
-        GeistMono.variable,
+        // GeistSans.variable,
+        // GeistMono.variable,
       )}
     >
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
